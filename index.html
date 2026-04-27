@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Хайдар Муртазин — Продающие сайты и Яндекс.Директ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #080808;
+      --bg-2:      #101010;
+      --bg-card:   #141414;
+      --bg-card-h: #1a1a1a;
+      --border:    rgba(255,255,255,0.07);
+      --border-g:  rgba(201,169,110,0.25);
+      --gold:      #C9A96E;
+      --gold-l:    #E8C98A;
+      --gold-d:    #a07c3e;
+      --text:      #F0EDE8;
+      --text-2:    #8A8784;
+      --text-3:    #4A4744;
+      --r:         14px;
+      --r-lg:      20px;
+      --trans:     0.25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: inherit; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 100px 0; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--gold); background: rgba(201,169,110,.1);
+      border: 1px solid rgba(201,169,110,.2); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px;
+    }
+    .tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+    .section-sub { font-size: 17px; color: var(--text-2); line-height: 1.7; max-width: 560px; margin-top: 14px; }
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .fade-in-d1 { transition-delay: .1s; } .fade-in-d2 { transition-delay: .2s; }
+    .fade-in-d3 { transition-delay: .3s; } .fade-in-d4 { transition-delay: .4s; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 16px; font-weight: 700; background: var(--gold); color: #000;
+      border: none; border-radius: var(--r); padding: 15px 28px;
+      transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+    }
+    .btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,169,110,.25); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 500; color: var(--text-2);
+      background: none; border: 1px solid var(--border); border-radius: var(--r); padding: 14px 24px;
+      transition: color var(--trans), border-color var(--trans);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border-g); }
+
+    /* ---- NAV ---- */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(8,8,8,.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-2); transition: color var(--trans); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 14px; font-weight: 600; background: var(--gold); color: #000; border: none; border-radius: 8px; padding: 9px 20px; transition: background var(--trans); }
+    .nav-cta:hover { background: var(--gold-l); }
+    .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+    .nav-burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; inset: 64px 0 0 0; z-index: 99; background: rgba(8,8,8,.98); backdrop-filter: blur(20px); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 22px; font-weight: 600; color: var(--text-2); }
+
+    /* ---- HERO ---- */
+    .hero {
+      padding-top: 64px; min-height: 100vh; display: flex; align-items: center;
+      position: relative; overflow: hidden; background: var(--bg);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 40%, rgba(201,169,110,.08) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0; opacity: .02;
+      background-image: linear-gradient(var(--text) 1px, transparent 1px), linear-gradient(90deg, var(--text) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; padding: 60px 0;
+    }
+    .hero-badge-live {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--gold);
+      background: rgba(201,169,110,.08); border: 1px solid rgba(201,169,110,.2);
+      border-radius: 100px; padding: 6px 16px; margin-bottom: 24px;
+    }
+    .hero-badge-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 8px var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+    .hero-title { font-size: clamp(34px, 5vw, 58px); font-weight: 900; line-height: 1.08; letter-spacing: -.03em; }
+    .hero-title em { font-style: normal; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-l) 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 17px; color: var(--text-2); line-height: 1.7; margin-top: 20px; max-width: 520px; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 32px; flex-wrap: wrap; }
+    .hero-stats { display: flex; gap: 24px; margin-top: 40px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--border); }
+    .hero-stat { }
+    .hero-stat-num { font-size: 26px; font-weight: 800; color: var(--gold); letter-spacing: -.02em; }
+    .hero-stat-label { font-size: 12px; color: var(--text-2); margin-top: 2px; }
+    .hero-photo-col { position: relative; }
+    .hero-photo {
+      border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border);
+      box-shadow: 0 32px 80px rgba(0,0,0,.6); aspect-ratio: 3/4; position: relative;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #1e1a14 0%, #0e0c09 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      color: var(--text-3); font-size: 12px; text-align: center; padding: 20px;
+    }
+    .hero-photo-placeholder svg { width: 40px; height: 40px; opacity: .25; }
+    .hero-photo::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, rgba(8,8,8,.7), transparent); }
+    .hero-badge-card {
+      position: absolute; bottom: 20px; left: 20px; right: 20px; z-index: 2;
+      background: rgba(20,20,20,.9); backdrop-filter: blur(12px);
+      border: 1px solid var(--border-g); border-radius: var(--r); padding: 14px 16px;
+    }
+    .hero-badge-card-name { font-size: 15px; font-weight: 700; }
+    .hero-badge-card-role { font-size: 12px; color: var(--gold); margin-top: 2px; }
+
+    /* ---- ABOUT ---- */
+    .about { background: var(--bg); position: relative; overflow: hidden; }
+    .about::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,169,110,.05) 0%, transparent 65%); pointer-events: none; }
+    .about-grid { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
+    /* Expert card side */
+    .about-expert-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px 24px; }
+    .about-expert-card-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--gold); margin-bottom: 22px; }
+    .about-expert-items { display: flex; flex-direction: column; gap: 0; }
+    .about-expert-item { display: grid; grid-template-columns: 36px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .about-expert-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .about-expert-item:first-child { padding-top: 0; }
+    .about-expert-num { width: 32px; height: 32px; border-radius: 8px; background: rgba(201,169,110,.1); border: 1px solid rgba(201,169,110,.2); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .about-expert-item-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .about-expert-item-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    /* Content side */
+    .about-content-side { display: flex; flex-direction: column; gap: 0; }
+    .about-lead { font-size: 16px; color: var(--text-2); line-height: 1.75; margin-top: 18px; }
+    .about-lead strong { color: var(--text); font-weight: 600; }
+    .about-lead + .about-lead { margin-top: 14px; }
+    .about-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .about-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); border-radius: 2px; margin: 24px 0; }
+    .about-quote { background: var(--bg-card); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 18px 22px; margin-top: 24px; }
+    .about-quote-text { font-size: 15px; color: var(--text-2); line-height: 1.7; font-style: italic; }
+    .about-quote-text strong { color: var(--text); font-style: normal; font-weight: 700; }
+    /* Responsive */
+    @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .chip { font-size: 12px; font-weight: 500; color: var(--text-2); background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; padding: 5px 14px; transition: border-color var(--trans), color var(--trans); }
+    .chip:hover { border-color: var(--border-g); color: var(--gold); }
+
+    /* ---- VIDEO REVIEWS ---- */
+    .video-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; }
+    .video-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--trans), transform var(--trans); }
+    .video-card:hover { border-color: var(--border-g); transform: translateY(-3px); }
+    .video-card video { width: 100%; display: block; aspect-ratio: 9/16; object-fit: cover; background: #000; }
+    .video-label { padding: 12px 14px; font-size: 13px; font-weight: 500; color: var(--text-2); line-height: 1.4; }
+
+    /* ---- TELEGRAM CASE BUTTON ---- */
+    .btn-case-tg {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; margin-top: 20px;
+      background: rgba(39,161,234,.1); border: 1px solid rgba(39,161,234,.25);
+      color: #4db8f5; border-radius: var(--r); padding: 13px 20px;
+      font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer;
+      transition: background var(--trans), border-color var(--trans), transform var(--trans);
+    }
+    .btn-case-tg:hover { background: rgba(39,161,234,.2); border-color: rgba(39,161,234,.5); transform: translateY(-1px); }
+
+    /* ---- PAIN ---- */
+    .pain-head { text-align: left; max-width: 680px; margin: 0 0 52px; }
+    .pain-head .section-title { font-size: clamp(22px, 3.5vw, 36px); }
+    .pain-head .section-sub { margin: 12px 0 0; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .pain-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r);
+      padding: 28px 24px;
+      transition: border-color var(--trans), transform var(--trans), background var(--trans);
+    }
+    .pain-card:hover { border-color: var(--border-g); transform: translateY(-3px); background: var(--bg-card-h); }
+    .pain-icon { font-size: 28px; margin-bottom: 14px; line-height: 1; }
+    .pain-body { font-size: 15px; line-height: 1.55; color: var(--text-2); }
+    .pain-body strong { color: var(--text); font-weight: 700; }
+
+    /* ---- CASES ---- */
+    .cases { background: var(--bg-2); }
+    .cases-head { margin-bottom: 48px; }
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .case-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+      overflow: hidden; cursor: pointer;
+      transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+    }
+    .case-card:hover { border-color: var(--border-g); transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,.4); }
+    .case-thumb { aspect-ratio: 16/9; overflow: hidden; position: relative; background: linear-gradient(135deg, #181510 0%, #0e0c09 100%); }
+    .case-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .case-card:hover .case-thumb img { transform: scale(1.04); }
+    .case-thumb-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text-3); font-size: 11px; text-align: center; padding: 16px; }
+    .case-thumb-placeholder svg { width: 24px; height: 24px; opacity: .2; }
+    .case-tag { position: absolute; top: 10px; left: 10px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; background: rgba(201,169,110,.15); color: var(--gold); border: 1px solid rgba(201,169,110,.3); border-radius: 100px; padding: 3px 9px; }
+    .case-body { padding: 18px 20px 20px; }
+    .case-result { font-size: 20px; font-weight: 800; color: var(--gold); letter-spacing: -.02em; margin-bottom: 5px; }
+    .case-title { font-size: 14px; font-weight: 600; line-height: 1.4; }
+    .case-niche { font-size: 12px; color: var(--text-2); margin-top: 5px; }
+    .case-more { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--gold); margin-top: 12px; }
+    .case-more svg { transition: transform var(--trans); }
+    .case-card:hover .case-more svg { transform: translateX(4px); }
+
+    /* ---- MODAL ---- */
+    .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); width: 100%; max-width: 680px; max-height: 88vh; overflow-y: auto; transform: translateY(20px); transition: transform .3s ease; scrollbar-width: thin; scrollbar-color: var(--border-g) transparent; }
+    .modal-overlay.open .modal { transform: none; }
+    .modal-head { padding: 24px 24px 18px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg-card); z-index: 1; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .modal-niche { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: 5px; }
+    .modal-title { font-size: 18px; font-weight: 800; line-height: 1.3; }
+    .modal-close { flex-shrink: 0; width: 30px; height: 30px; background: var(--bg-card-h); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--text-2); transition: color var(--trans), border-color var(--trans); }
+    .modal-close:hover { color: var(--text); border-color: var(--border-g); }
+    .modal-body { padding: 20px 24px 24px; }
+    .modal-section { margin-bottom: 20px; }
+    .modal-section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 8px; }
+    .modal-section p { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+    .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .modal-section ul li { font-size: 14px; color: var(--text-2); line-height: 1.6; padding-left: 16px; position: relative; }
+    .modal-section ul li::before { content: ''; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+    .modal-result-box { background: rgba(201,169,110,.07); border: 1px solid rgba(201,169,110,.2); border-radius: var(--r); padding: 18px; margin-top: 16px; }
+    .modal-result-box .result-num { font-size: 26px; font-weight: 900; color: var(--gold); letter-spacing: -.02em; }
+    .modal-result-box .result-label { font-size: 13px; color: var(--text-2); margin-top: 3px; }
+    .modal-stats-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .modal-stat { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 16px; flex: 1; min-width: 120px; }
+    .modal-stat-num { font-size: 16px; font-weight: 700; color: var(--text); }
+    .modal-stat-label { font-size: 11px; color: var(--text-2); margin-top: 2px; }
+    .modal-img-placeholder { width: 100%; border-radius: var(--r); background: var(--bg-2); border: 1px dashed var(--border); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 13px; text-align: center; padding: 16px; margin-top: 12px; }
+    .modal-screenshots { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .modal-screenshots img { width: 100%; border-radius: var(--r); border: 1px solid var(--border); display: block; }
+
+    /* ---- PROCESS ---- */
+    .process-head { max-width: 560px; margin-bottom: 56px; }
+    .process-steps { display: flex; flex-direction: column; }
+    .process-step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+    .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: var(--gold); transition: background var(--trans), border-color var(--trans); }
+    .process-step:hover .step-num { background: rgba(201,169,110,.1); border-color: var(--border-g); }
+    .step-title { font-size: 16px; font-weight: 700; margin-bottom: 7px; }
+    .step-desc { font-size: 14px; color: var(--text-2); line-height: 1.7; }
+
+    /* ---- PRICING ---- */
+    .pricing { background: var(--bg-2); }
+    .pricing-head { max-width: 640px; margin-bottom: 52px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pricing-card {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 0;
+      transition: border-color var(--trans), transform var(--trans);
+      position: relative;
+    }
+    .pricing-card:hover { border-color: var(--border-g); transform: translateY(-4px); }
+    .pricing-card.featured { border-color: rgba(201,169,110,.35); background: linear-gradient(160deg, #1a1612 0%, #0e0c09 100%); }
+    .pricing-badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; background: rgba(201,169,110,.15); color: var(--gold); border: 1px solid rgba(201,169,110,.3); border-radius: 100px; padding: 3px 10px; margin-bottom: 14px; }
+    .pricing-name { font-size: 20px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 7px; }
+    .pricing-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+    .pricing-features { display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; flex: 1; }
+    .pricing-feature { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .pricing-feature::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+    .pricing-price { margin-bottom: 6px; }
+    .pricing-price-main { font-size: 22px; font-weight: 800; color: var(--gold); letter-spacing: -.02em; }
+    .pricing-price-add { font-size: 12px; color: var(--text-3); margin-top: 3px; }
+    .pricing-btn { display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 18px; padding: 13px; font-size: 14px; font-weight: 700; border-radius: var(--r); border: none; cursor: pointer; transition: background var(--trans), transform var(--trans); }
+    .pricing-btn-outline { background: transparent; border: 1px solid var(--border-g); color: var(--gold); }
+    .pricing-btn-outline:hover { background: rgba(201,169,110,.08); transform: translateY(-1px); }
+    .pricing-btn-solid { background: var(--gold); color: #000; }
+    .pricing-btn-solid:hover { background: var(--gold-l); transform: translateY(-1px); }
+    .pricing-disclaimer { font-size: 12px; color: var(--text-3); line-height: 1.6; text-align: center; margin-top: 32px; max-width: 620px; margin-left: auto; margin-right: auto; }
+    @media (max-width: 900px) { .pricing-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+
+    /* ---- REVIEWS ---- */
+    .reviews { background: var(--bg-2); }
+    .reviews-head { margin-bottom: 48px; }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color var(--trans); }
+    .review-card:hover { border-color: var(--border-g); }
+    .review-img { aspect-ratio: 9/16; background: var(--bg-2); display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 12px; text-align: center; padding: 16px; border-bottom: 1px solid var(--border); }
+    .review-img img { width: 100%; height: 100%; object-fit: cover; }
+    .review-label { padding: 12px 14px; font-size: 12px; color: var(--text-2); }
+    .yt-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 36px; }
+    .yt-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; cursor: pointer; transition: border-color var(--trans), transform var(--trans); }
+    .yt-card:hover { border-color: var(--border-g); transform: translateY(-3px); }
+    .yt-thumb { aspect-ratio: 16/9; position: relative; background: #0e0e0e; display: flex; align-items: center; justify-content: center; }
+    .yt-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .yt-play { position: absolute; width: 48px; height: 48px; background: rgba(0,0,0,.7); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background var(--trans), transform var(--trans); }
+    .yt-card:hover .yt-play { background: #c00; transform: scale(1.1); }
+    .yt-play svg { fill: #fff; margin-left: 4px; }
+    .yt-label { padding: 12px 14px; font-size: 14px; font-weight: 500; line-height: 1.4; }
+
+    /* ---- QUIZ ---- */
+    .quiz-wrap { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+    .quiz-header { padding: 36px 48px 32px; background: linear-gradient(135deg, #181410 0%, #0e0c09 100%); border-bottom: 1px solid var(--border); text-align: center; }
+    .quiz-header h2 { font-size: 26px; font-weight: 800; letter-spacing: -.02em; margin-top: 10px; }
+    .quiz-header p { font-size: 15px; color: var(--text-2); margin-top: 7px; }
+    .quiz-progress-bar { height: 3px; background: var(--border); }
+    .quiz-progress-fill { height: 100%; background: var(--gold); transition: width .4s ease; }
+    .quiz-body { padding: 36px 48px 44px; }
+    .quiz-step { display: none; }
+    .quiz-step.active { display: block; }
+    .quiz-q-num { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); margin-bottom: 10px; }
+    .quiz-q-text { font-size: 21px; font-weight: 800; letter-spacing: -.02em; line-height: 1.3; margin-bottom: 24px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 9px; }
+    .quiz-option { display: flex; align-items: center; gap: 12px; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; font-size: 14px; font-weight: 500; color: var(--text-2); transition: border-color var(--trans), background var(--trans), color var(--trans); cursor: pointer; text-align: left; width: 100%; }
+    .quiz-option:hover, .quiz-option.selected { border-color: var(--border-g); background: rgba(201,169,110,.07); color: var(--text); }
+    .quiz-option-dot { width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; border: 2px solid var(--border); transition: border-color var(--trans), background var(--trans); }
+    .quiz-option:hover .quiz-option-dot, .quiz-option.selected .quiz-option-dot { border-color: var(--gold); background: var(--gold); }
+    .quiz-warm { display: none; align-items: flex-start; gap: 12px; background: rgba(201,169,110,.07); border: 1px solid rgba(201,169,110,.2); border-radius: var(--r); padding: 14px 18px; margin-top: 16px; animation: slideUp .35s ease; }
+    .quiz-warm.show { display: flex; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .quiz-warm-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .quiz-warm-text { font-size: 13px; color: var(--gold-l); line-height: 1.6; }
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; }
+    .btn-quiz-back { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--text-2); background: none; border: 1px solid var(--border); border-radius: var(--r); padding: 10px 18px; transition: color var(--trans), border-color var(--trans); }
+    .btn-quiz-back:hover { color: var(--text); border-color: var(--border-g); }
+    .btn-quiz-back.hidden { visibility: hidden; pointer-events: none; }
+    .btn-quiz-next { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; background: var(--gold); color: #000; border: none; border-radius: var(--r); padding: 12px 22px; transition: background var(--trans), transform var(--trans); opacity: .4; pointer-events: none; }
+    .btn-quiz-next.ready { opacity: 1; pointer-events: all; }
+    .btn-quiz-next.ready:hover { background: var(--gold-l); transform: translateY(-1px); }
+    .quiz-form-step { display: none; }
+    .quiz-form-step.active { display: block; }
+    .quiz-form-intro { font-size: 21px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 7px; }
+    .quiz-form-sub { font-size: 14px; color: var(--text-2); margin-bottom: 24px; line-height: 1.6; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 12px; font-weight: 600; color: var(--text-2); }
+    .form-group input { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px; font-size: 14px; font-family: inherit; color: var(--text); transition: border-color var(--trans); outline: none; }
+    .form-group input::placeholder { color: var(--text-3); }
+    .form-group input:focus { border-color: var(--border-g); }
+    .form-submit { margin-top: 14px; width: 100%; font-size: 15px; font-weight: 700; background: var(--gold); color: #000; border: none; border-radius: var(--r); padding: 15px; transition: background var(--trans), transform var(--trans); }
+    .form-submit:hover { background: var(--gold-l); transform: translateY(-1px); }
+    .form-privacy { font-size: 11px; color: var(--text-3); text-align: center; margin-top: 10px; }
+    .quiz-success { display: none; text-align: center; padding: 20px 0; }
+    .quiz-success.show { display: block; }
+    .quiz-success-icon { font-size: 48px; margin-bottom: 14px; }
+    .quiz-success h3 { font-size: 22px; font-weight: 800; }
+    .quiz-success p { font-size: 15px; color: var(--text-2); margin-top: 8px; line-height: 1.6; }
+
+    /* ---- CTA ---- */
+    .cta-section { background: var(--bg-2); padding: 100px 0; }
+    .cta-inner { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: center; }
+    .cta-title { font-size: clamp(26px, 3.8vw, 42px); font-weight: 900; letter-spacing: -.02em; line-height: 1.1; }
+    .cta-title em { font-style: normal; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-l) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .cta-text { font-size: 15px; color: var(--text-2); line-height: 1.7; margin-top: 14px; }
+    .cta-contacts { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+    .cta-link { display: flex; align-items: center; gap: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; transition: border-color var(--trans), transform var(--trans); }
+    .cta-link:hover { border-color: var(--border-g); transform: translateX(4px); }
+    .cta-link-icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .cta-link-icon.tg { background: rgba(39,161,234,.15); }
+    .cta-link-icon.wa { background: rgba(37,211,102,.15); }
+    .cta-link-label { font-size: 11px; color: var(--text-3); }
+    .cta-link-val { font-size: 14px; font-weight: 600; margin-top: 1px; }
+    .cta-photo { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 3/4; background: linear-gradient(160deg, #1a1612 0%, #0e0c09 100%); display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 12px; }
+    .cta-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .cta-consult-card { background: var(--bg-card); border: 1px solid var(--border-g); border-radius: var(--r-lg); padding: 32px 28px; display: flex; flex-direction: column; gap: 0; }
+    .cta-consult-card-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 20px; }
+    .cta-consult-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .cta-consult-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text-2); line-height: 1.5; }
+    .cta-consult-list li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; }
+
+    /* ---- FOOTER ---- */
+    footer { padding: 28px 0; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 12px; color: var(--text-3); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 12px; color: var(--text-3); transition: color var(--trans); }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-col { max-width: 340px; margin: 0 auto; width: 100%; }
+      .cases-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
+      .cta-photo { display: none; }
+      .quiz-body { padding: 24px 20px 28px; }
+      .quiz-header { padding: 24px 20px; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 64px 0; }
+      .nav-links { display: none; }
+      .nav-cta-desktop { display: none; }
+      .nav-burger { display: flex; }
+      .pain-grid { grid-template-columns: 1fr 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-stats { gap: 16px; }
+      .modal { max-height: 95vh; }
+      .modal-head, .modal-body { padding-left: 16px; padding-right: 16px; }
+    }
+
+    /* ---- CONSULTATION POPUP ---- */
+    .consult-overlay { position:fixed; inset:0; z-index:300; background:rgba(0,0,0,.88); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; padding:24px; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+    .consult-overlay.open { opacity:1; pointer-events:all; }
+    .consult-modal { background:var(--bg-card); border:1px solid rgba(201,169,110,.3); border-radius:var(--r-lg); width:100%; max-width:460px; padding:36px 32px 28px; position:relative; transform:translateY(24px); transition:transform .3s ease; }
+    .consult-overlay.open .consult-modal { transform:translateY(0); }
+    .consult-close { position:absolute; top:14px; right:14px; width:30px; height:30px; background:var(--bg-card-h); border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--text-2); cursor:pointer; transition:color var(--trans),border-color var(--trans); line-height:1; }
+    .consult-close:hover { color:var(--text); border-color:var(--gold); }
+    .consult-badge { display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); background:rgba(201,169,110,.08); border:1px solid rgba(201,169,110,.2); border-radius:100px; padding:4px 12px; margin-bottom:14px; }
+    .consult-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); box-shadow:0 0 6px var(--gold); animation:pulse 2s infinite; }
+    .consult-h { font-size:22px; font-weight:800; line-height:1.2; letter-spacing:-.025em; margin-bottom:8px; }
+    .consult-h em { font-style:normal; background:linear-gradient(135deg,var(--gold) 0%,var(--gold-l) 50%,var(--gold) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .consult-sub { font-size:13px; color:var(--text-2); margin-bottom:24px; line-height:1.6; }
+    .consult-field-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--text-3); margin-bottom:7px; }
+    .consult-phone-wrap { margin-bottom:18px; }
+    .consult-phone-wrap input { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:13px 16px; font-size:16px; color:var(--text); outline:none; transition:border-color var(--trans); font-family:inherit; }
+    .consult-phone-wrap input:focus { border-color:var(--gold); }
+    .consult-phone-wrap input.error { border-color:#e05050; }
+    .consult-chips { display:flex; gap:8px; margin-bottom:22px; }
+    .consult-chip { flex:1; display:flex; align-items:center; justify-content:center; gap:6px; font-size:13px; font-weight:600; padding:10px 8px; border-radius:10px; border:1px solid var(--border); background:var(--bg); color:var(--text-2); cursor:pointer; transition:all var(--trans); user-select:none; text-align:center; }
+    .consult-chip:hover { border-color:var(--border-g); color:var(--text); }
+    .consult-chip.active { border-color:var(--gold); background:rgba(201,169,110,.1); color:var(--gold); }
+    .consult-submit { width:100%; padding:15px; font-size:15px; font-weight:700; background:var(--gold); color:#000; border:none; border-radius:10px; cursor:pointer; transition:background var(--trans),transform var(--trans),box-shadow var(--trans); letter-spacing:-.01em; }
+    .consult-submit:hover { background:var(--gold-l); transform:translateY(-1px); box-shadow:0 8px 24px rgba(201,169,110,.25); }
+    .consult-privacy { font-size:11px; color:var(--text-3); text-align:center; margin-top:10px; }
+    .consult-success { display:none; flex-direction:column; align-items:center; text-align:center; padding:8px 0; }
+    .consult-success.show { display:flex; }
+    .consult-success-icon { font-size:52px; margin-bottom:16px; }
+    .consult-success h3 { font-size:22px; font-weight:800; margin-bottom:8px; letter-spacing:-.02em; }
+    .consult-success p { font-size:14px; color:var(--text-2); line-height:1.7; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Хайдар <span>Муртазин</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#process">Процесс</a></li>
+      <li><a href="#pricing">Тарифы</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+    </ul>
+    <button onclick="openConsult()" class="btn-primary nav-cta nav-cta-desktop" style="font-size:14px;padding:9px 20px;cursor:pointer;border:none;">Консультация 30 мин</button>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" class="mob-link">Обо мне</a>
+  <a href="#cases" class="mob-link">Кейсы</a>
+  <a href="#process" class="mob-link">Процесс</a>
+  <a href="#pricing" class="mob-link">Тарифы</a>
+  <a href="#reviews" class="mob-link">Отзывы</a>
+  <button onclick="openConsult();document.getElementById('mobile-menu').classList.remove('open')" class="btn-primary mob-link" style="font-size:16px;padding:12px 32px;cursor:pointer;border:none;">Консультация 30 мин</button>
+</div>
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Левая колонка: заголовок + CTA + статистика -->
+      <div class="fade-in">
+        <div class="hero-badge-live">Яндекс.Директ · Продающие сайты · Аналитика</div>
+        <h1 class="hero-title">
+          Построю систему заявок<br/>для вашего бизнеса:<br/><em>сайт + Директ + аналитика</em>
+        </h1>
+        <p class="hero-sub">
+          Не просто запускаю рекламу. Собираю связку, где сайт продаёт, Яндекс.Директ приводит целевой трафик, а CRM и аналитика показывают, какие заявки превращаются в деньги.
+        </p>
+        <div class="hero-actions">
+          <a href="#quiz" class="btn-primary">
+            Получить разбор моей ниши
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#cases" class="btn-ghost">Смотреть кейсы</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">50+</div>
+            <div class="hero-stat-label">проектов запущено</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">4+</div>
+            <div class="hero-stat-label">года в Яндекс.Директ</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">25+ млн</div>
+            <div class="hero-stat-label">рекламного бюджета</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">13+</div>
+            <div class="hero-stat-label">кейсов с цифрами</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Правая колонка: фото -->
+      <div class="hero-photo-col fade-in fade-in-d2">
+        <div class="hero-photo">
+          <img src="images/photo.jpg" alt="Хайдар Муртазин" style="width:100%;height:100%;object-fit:cover;object-position:top;" onerror="this.style.display='none';document.getElementById('hero-ph').style.display='flex'">
+          <div id="hero-ph" class="hero-photo-placeholder" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Сохраните фото как:<br/><code style="font-size:10px">images/photo.jpg</code>
+          </div>
+          <div class="hero-badge-card">
+            <div class="hero-badge-card-name">Хайдар Муртазин</div>
+            <div class="hero-badge-card-role">Яндекс.Директ · Продающие сайты</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     ОБО МНЕ
+================================================================ -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <!-- ЭКСПЕРТНАЯ КАРТОЧКА -->
+      <div class="about-expert-card fade-in">
+        <div class="about-expert-card-title">Что я собираю в проекте</div>
+        <div class="about-expert-items">
+          <div class="about-expert-item">
+            <div class="about-expert-num">1</div>
+            <div>
+              <div class="about-expert-item-title">Оффер и упаковка</div>
+              <div class="about-expert-item-desc">Формулирую, почему клиенту стоит оставить заявку именно у вас.</div>
+            </div>
+          </div>
+          <div class="about-expert-item">
+            <div class="about-expert-num">2</div>
+            <div>
+              <div class="about-expert-item-title">Сайт или квиз</div>
+              <div class="about-expert-item-desc">Делаю посадочную страницу, которая объясняет ценность и ведёт к заявке.</div>
+            </div>
+          </div>
+          <div class="about-expert-item">
+            <div class="about-expert-num">3</div>
+            <div>
+              <div class="about-expert-item-title">Яндекс.Директ</div>
+              <div class="about-expert-item-desc">Запускаю поиск, РСЯ, Мастера кампаний и тестирую гипотезы.</div>
+            </div>
+          </div>
+          <div class="about-expert-item">
+            <div class="about-expert-num">4</div>
+            <div>
+              <div class="about-expert-item-title">Аналитика и CRM</div>
+              <div class="about-expert-item-desc">Настраиваю цели, передачу заявок и смотрю на качество лидов, а не только на CPL.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- КОНТЕНТ -->
+      <div class="about-content-side fade-in fade-in-d2">
+        <div class="tag">Обо мне</div>
+        <h2 class="section-title" style="margin-top:16px;">Меня зовут Хайдар Муртазин</h2>
+        <div class="about-divider"></div>
+        <p class="about-lead">
+          Я занимаюсь <strong>Яндекс.Директом, продающими сайтами и воронками</strong>, которые помогают бизнесу получать заявки и понимать, что реально приносит деньги.
+        </p>
+        <p class="about-lead">
+          За последние годы запускал проекты в строительстве, производстве, недвижимости, онлайн-школах, услугах и B2B. В работе смотрю не только на клики и заявки, а на всю цепочку: <strong>от первого касания до продажи в CRM</strong>.
+        </p>
+        <p class="about-lead">
+          Моя задача — не «слить бюджет на тесты», а собрать понятную систему: куда ведём трафик, какой оффер показываем, какие заявки считаем качественными и что нужно докрутить, чтобы бизнес рос.
+        </p>
+        <div class="about-quote">
+          <p class="about-quote-text">Я не продаю «настройку рекламы ради настройки». Я собираю связку, где <strong>сайт, реклама и аналитика работают вместе</strong> — и бизнес видит результат в цифрах.</p>
+        </div>
+        <div class="about-chips">
+          <span class="chip">Яндекс.Директ</span>
+          <span class="chip">Продающие сайты</span>
+          <span class="chip">Квизы и лендинги</span>
+          <span class="chip">Сквозная аналитика</span>
+          <span class="chip">Воронки продаж</span>
+          <span class="chip">Строительство</span>
+          <span class="chip">B2B / B2G</span>
+          <span class="chip">Недвижимость</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     БОЛИ КЛИЕНТОВ
+================================================================ -->
+<section class="section" id="pain">
+  <div class="container">
+    <div class="pain-head fade-in">
+      <h2 class="section-title">Обычно ко мне приходят, когда реклама уже «что-то крутит», но бизнес не видит понятной прибыли</h2>
+      <p class="section-sub" style="margin:12px 0 0;">Здесь не про красивые клики в кабинете. Важно, чтобы заявки были целевыми, отдел продаж понимал их качество, а собственник видел, куда уходит бюджет.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in fade-in-d1">
+        <div class="pain-icon">🌐</div>
+        <div class="pain-body"><strong>Сайт есть, но заявок с него почти нет</strong></div>
+      </div>
+      <div class="pain-card fade-in fade-in-d2">
+        <div class="pain-icon">💸</div>
+        <div class="pain-body"><strong>Реклама работает, но лиды дорогие или мусорные</strong></div>
+      </div>
+      <div class="pain-card fade-in fade-in-d3">
+        <div class="pain-icon">📊</div>
+        <div class="pain-body"><strong>Непонятно, куда уходит бюджет</strong> и какие заявки реально приносят продажи</div>
+      </div>
+      <div class="pain-card fade-in fade-in-d1">
+        <div class="pain-icon">🎯</div>
+        <div class="pain-body">Заявки есть, но отдел продаж говорит: <strong>«они нецелевые»</strong></div>
+      </div>
+      <div class="pain-card fade-in fade-in-d2">
+        <div class="pain-icon">🧩</div>
+        <div class="pain-body">Сайт отдельно, реклама отдельно, CRM отдельно — <strong>системы нет</strong></div>
+      </div>
+      <div class="pain-card fade-in fade-in-d3">
+        <div class="pain-icon">📈</div>
+        <div class="pain-body">Хочется <strong>прогнозируемый поток заявок</strong>, а не случайные всплески</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     КЕЙСЫ (13 штук, по убыванию)
+================================================================ -->
+<section class="section cases" id="cases">
+  <div class="container">
+    <div class="cases-head fade-in">
+      <div class="tag">Портфолио</div>
+      <h2 class="section-title">Кейсы и реальные результаты</h2>
+      <p class="section-sub">Нажмите на карточку — откроются детали проекта: задача, что сделано, итог в цифрах.</p>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card fade-in fade-in-d1" onclick="openModal('c1')">
+        <div class="case-thumb"><img src="images/case1.jpg" alt="Металлоконструкции" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Производство</span></div>
+        <div class="case-body"><div class="case-result">39 000 000 ₽</div><div class="case-title">Здания из металлоконструкций — за 4 месяца</div><div class="case-niche">Изготовление и возведение зданий</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d2" onclick="openModal('c2')">
+        <div class="case-thumb"><img src="images/case2.jpg" alt="Бани" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">25 000 000 ₽</div><div class="case-title">Проектирование и строительство бань — Москва и МО</div><div class="case-niche">Строительство бань под ключ</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d3" onclick="openModal('c3')">
+        <div class="case-thumb"><img src="images/case3.jpg" alt="Дизайн-проект" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">3 500 000 ₽/мес.</div><div class="case-title">Дизайн-проект коммерческой недвижимости</div><div class="case-niche">Стабильная ежемесячная выручка</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d1" onclick="openModal('c4')">
+        <div class="case-thumb"><img src="images/case4.jpg" alt="Камины" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">1 600 000 ₽/мес.</div><div class="case-title">Камины, печи и барбекю-комплексы</div><div class="case-niche">Заявка не дороже 2 500 ₽</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d2" onclick="openModal('c5')">
+        <div class="case-thumb"><img src="images/case5.jpg" alt="Модульные дома" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">3 продажи × 1,5 млн ₽</div><div class="case-title">Модульные дома — за 3 месяца</div><div class="case-niche">Высокий чек · Короткий цикл</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d3" onclick="openModal('c6')">
+        <div class="case-thumb"><img src="images/case6.jpg" alt="Онлайн-школа" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Онлайн-школа</span></div>
+        <div class="case-body"><div class="case-result">15 125 регистраций</div><div class="case-title">Онлайн-школа нутрициологов — 170 ₽ за конверсию</div><div class="case-niche">Бюджет 2,7 млн · 302 продажи за август</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d1" onclick="openModal('c7')">
+        <div class="case-thumb"><img src="images/case7.jpg" alt="Франшиза" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Франшиза</span></div>
+        <div class="case-body"><div class="case-result">191 квал. лид</div><div class="case-title">Франшиза в сфере HoReCa</div><div class="case-niche">3 900 ₽ квал. лид · 1 054 000 показов</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d2" onclick="openModal('c8')">
+        <div class="case-thumb"><img src="images/case8.jpg" alt="Недвижимость" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Недвижимость</span></div>
+        <div class="case-body"><div class="case-result">783 000 показов</div><div class="case-title">Агентство недвижимости Красноярск — ЖК</div><div class="case-niche">130 000 ₽/мес · 178 конверсий · 732 ₽/лид</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d3" onclick="openModal('c9')">
+        <div class="case-thumb"><img src="images/case9.jpg" alt="B2B обследование" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">B2B / B2G</span></div>
+        <div class="case-body"><div class="case-result">3 200 000 ₽ в работе</div><div class="case-title">Обследование зданий: лиды от заводов и госучреждений</div><div class="case-niche">Бюджет 55 000 ₽ · Квиз-воронка</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d1" onclick="openModal('c10')">
+        <div class="case-thumb"><img src="images/case10.jpg" alt="Спортклуб" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Фитнес / B2C</span></div>
+        <div class="case-body"><div class="case-result">Стабильный поток</div><div class="case-title">Спортклуб «Космос» — комплексное продвижение</div><div class="case-niche">Сайт + Директ + соцсети + блогеры</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d2" onclick="openModal('c11')">
+        <div class="case-thumb"><img src="images/case11.jpg" alt="Дома Татарстан" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">Поток заявок</div><div class="case-title">Строительство частных домов «под ключ» в Татарстане</div><div class="case-niche">Сайт + реклама в Яндекс.Директ</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d3" onclick="openModal('c12')">
+        <div class="case-thumb"><img src="images/case12.jpg" alt="Ансат" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">Строительство</span></div>
+        <div class="case-body"><div class="case-result">Рост продаж</div><div class="case-title">Дома и коттеджи — компания «Ансат»</div><div class="case-niche">Яндекс.Директ · Продающий лендинг</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+      <div class="case-card fade-in fade-in-d1" onclick="openModal('c13')">
+        <div class="case-thumb"><img src="images/case13.jpg" alt="Буровые работы" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'"><div class="case-thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>скрин</div><span class="case-tag">B2B · Буровые работы</span></div>
+        <div class="case-body"><div class="case-result">Целевые B2B-лиды</div><div class="case-title">Горизонтально направленное бурение</div><div class="case-niche">Сложная ниша · Квиз + Директ</div><div class="case-more">Подробнее <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     МОДАЛЬНЫЕ ОКНА КЕЙСОВ
+================================================================ -->
+<div class="modal-overlay" id="overlay" onclick="closeModalOutside(event)">
+  <div class="modal" id="modal-box">
+
+    <div id="c1" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Производство · Металлоконструкции</div><div class="modal-title">39 млн рублей за 4 месяца — изготовление и возведение зданий из металлоконструкций</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Точка А</div><p>Заказчик обратился с настроенной рекламой в Директ — бюджет сливался, заявок не было. Доступа к рекламному кабинету для аудита не было. Отсутствовал надёжный подрядчик на ежедневной основе.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Анализ ниши и конкурентов с нуля</li><li>Разработка нового продающего лендинга</li><li>Настройка рекламных кампаний в Яндекс.Директ</li><li>Сквозная аналитика — каждый рубль под контролем</li><li>Еженедельная оптимизация и масштабирование</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet1.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">39 000 000 ₽</div><div class="result-label">выручки с рекламного канала за 4 месяца</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">39 млн ₽</div><div class="modal-stat-label">итоговая выручка</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">4 мес.</div><div class="modal-stat-label">срок работы</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">0 → 🔥</div><div class="modal-stat-label">с нуля до результата</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">∞x</div><div class="modal-stat-label">окупаемость</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c2" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Бани</div><div class="modal-title">25 млн рублей — проектирование и строительство бань в Москве и МО</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Точка А</div><p>Заказчик обратился без доступа к текущему рекламному кабинету. Реклама уже шла, но деньги уходили без заявок. Надёжного подрядчика не было.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Рекламные кампании с нуля: аудит, стратегия, запуск</li><li>Новый продающий одностраничник</li><li>Настройка аналитики и целей</li><li>Ежедневный мониторинг и оптимизация ставок</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet2.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">25 000 000 ₽</div><div class="result-label">выручки с рекламного канала</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">25 млн ₽</div><div class="modal-stat-label">итоговая выручка</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">Москва</div><div class="modal-stat-label">и Московская область</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">Новый</div><div class="modal-stat-label">сайт + реклама с нуля</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c3" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Коммерческая недвижимость</div><div class="modal-title">Выручка 3,5 млн рублей ежемесячно — дизайн-проект коммерческой недвижимости</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Выстроить стабильный поток клиентов на дизайн и ремонт коммерческих объектов. Средний чек высокий — важна качественная квалификация входящих заявок.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Разработка продающего лендинга под B2B-аудиторию</li><li>Квиз для квалификации клиентов до звонка</li><li>Настройка Яндекс.Директ с точечным таргетом</li><li>Масштабирование успешных связок</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet3.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">3 500 000 ₽/мес.</div><div class="result-label">стабильная ежемесячная выручка</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">3,5 млн ₽</div><div class="modal-stat-label">выручка / мес</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">B2B</div><div class="modal-stat-label">коммерческая аудитория</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">Квиз</div><div class="modal-stat-label">квалификация до звонка</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c4" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Камины и печи</div><div class="modal-title">Выручка 1,6 млн рублей ежемесячно — камины, печи, барбекю-комплексы</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Точка А</div><p>Рекламный бюджет сливался без результата. Надёжного подрядчика не было. Задача: заявки не дороже 2 500 ₽.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Стратегия под сезонный спрос</li><li>Продающий лендинг с высокой конверсией</li><li>Кампании в Яндекс.Директ, стоимость заявки снижена до цели</li><li>Ежемесячное сопровождение и масштабирование</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet4.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">1 600 000 ₽/мес.</div><div class="result-label">стабильная ежемесячная выручка · заявка ≤ 2 500 ₽</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">1,6 млн ₽</div><div class="modal-stat-label">выручка / мес</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">≤ 2 500 ₽</div><div class="modal-stat-label">стоимость заявки</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">Сезон</div><div class="modal-stat-label">стратегия под сезонность</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c5" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Модульные дома</div><div class="modal-title">3 продажи со средним чеком 1,5 млн ₽ в нише модульных домов за 3 месяца</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Продавать дорогостоящие модульные дома через интернет. Высокий чек требовал прогрева аудитории и точной квалификации лидов ещё до звонка.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Анализ конкурентов и портрета покупателя</li><li>Продающий сайт с визуализацией домов</li><li>Квиз для сегментации аудитории по бюджету и срокам</li><li>Яндекс.Директ с акцентом на тёплую аудиторию</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet5.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">4 500 000 ₽</div><div class="result-label">3 продажи × 1 500 000 ₽ за 3 месяца</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">3</div><div class="modal-stat-label">закрытые сделки</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">1 500 000 ₽</div><div class="modal-stat-label">средний чек</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">3 мес.</div><div class="modal-stat-label">срок работы</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">4,5 млн ₽</div><div class="modal-stat-label">итого выручка</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c6" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Онлайн-образование · Нутрициология</div><div class="modal-title">Онлайн-школа нутрициологов — 15 125 регистраций по 170 ₽</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Масштабный запуск онлайн-школы: набрать максимум регистраций в воронку при минимальной стоимости лида. Бюджет 2 709 975 ₽ за 3 месяца.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Многоканальная рекламная стратегия в Яндекс.Директ</li><li>Разработка посадочных страниц под разные сегменты</li><li>Воронка: регистрация → 3 видео → продающий вебинар</li><li>Оптимизация по конверсиям в покупку</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet6.png" alt="Скрин кабинета"><img src="images/cabinet66.png" alt="Скрин воронки"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">15 125 регистраций</div><div class="result-label">по 170 ₽ · 302 продажи за август · конверсия воронки 8,2%</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">2 709 975 ₽</div><div class="modal-stat-label">бюджет за 3 мес</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">170 ₽</div><div class="modal-stat-label">цена регистрации</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">302</div><div class="modal-stat-label">продажи за август</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">8,2%</div><div class="modal-stat-label">конверсия воронки</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c7" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Франшиза · HoReCa</div><div class="modal-title">Франшиза в сфере HoReCa — 191 квал. лид по 3 900 ₽</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Привлекать потенциальных франчайзи на покупку франшизы в ресторанной сфере. Важна квалификация: нужны люди с бюджетом, а не просто «интересующиеся».</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Анализ целевой аудитории потенциальных франчайзи</li><li>Разработка продающего лендинга под франшизу</li><li>Настройка кампаний в Яндекс.Директ</li><li>Квалификация лидов через анкету</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet7.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">191 квал. лид</div><div class="result-label">из 284 конверсий (67%) · цена квал. лида 3 900 ₽</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">760 000 ₽</div><div class="modal-stat-label">бюджет в мес</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">1 054 407</div><div class="modal-stat-label">показов</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">2 234 ₽</div><div class="modal-stat-label">цена конверсии</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">3 900 ₽</div><div class="modal-stat-label">квал. лид</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c8" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Недвижимость · Красноярск</div><div class="modal-title">Агентство недвижимости — 783 000 показов при бюджете 130 000 ₽</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Продвижение нескольких жилых комплексов в Красноярске. Необходимо привести качественные заявки на просмотр квартир при ограниченном бюджете.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Анализ конкурентов и рынка новостроек Красноярска</li><li>Рекламные объявления под каждый ЖК</li><li>Кампании в РСЯ с оптимизацией под конверсии</li><li>Снижение стоимости клика до 12 ₽ при CTR 1,41%</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet8.png" alt="Скрин кабинета"><img src="images/cabinet88.png" alt="Скрин объявлений"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box" style="margin-bottom:12px;"><div class="result-num">178 конверсий</div><div class="result-label">при бюджете 130 000 ₽/мес · стоимость лида 732 ₽</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">130 000 ₽</div><div class="modal-stat-label">бюджет/мес</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">783 000</div><div class="modal-stat-label">показов</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">11 000</div><div class="modal-stat-label">кликов</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">732 ₽</div><div class="modal-stat-label">цена конверсии</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c9" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">B2B / B2G · Обследование зданий</div><div class="modal-title">Забить воронку лидами от заводов и госучреждений при бюджете 55 000 ₽</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Сложность</div><p>Техническое обследование зданий — не импульсная покупка. Цикл сделки 1–3 месяца, чек от 55 000 ₽. Нужная аудитория — заводы, больницы, госучреждения. Стандартный подход не работал.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Стратегия</div><ul><li>Анализ 100+ конкурентов: лучшие ключи в поиске и контексте</li><li>Квиз-лендинг вместо сайта: быстро, дёшево, конверсионно</li><li>Квиз сегментировал лиды ещё до первого звонка</li><li>Директ точечно на B2B-аудиторию</li><li>КП для крупных объектов</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet9.png" alt="Скрин кабинета"><img src="images/cabinet99.png" alt="Скрин квиза"><img src="images/cabinet999.png" alt="Скрин статистики"><img src="images/cabinet9999.png" alt="Скрин результатов"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">3 200 000 ₽</div><div class="result-label">в работе в первые месяцы при бюджете 55 000 ₽</div></div>
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="modal-stat-num">3,2 млн ₽</div><div class="modal-stat-label">сделок в работе</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">55 000 ₽</div><div class="modal-stat-label">рекламный бюджет</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">58x</div><div class="modal-stat-label">возврат инвестиций</div></div>
+          <div class="modal-stat"><div class="modal-stat-num">B2B/B2G</div><div class="modal-stat-label">заводы и госучреждения</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="c10" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Фитнес · Комплексное продвижение</div><div class="modal-title">Спортклуб «Космос» — бесперебойный поток клиентов</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Выстроить систему для фитнес-клуба: сайт, контент, реклама, коллаборации с местными лидерами мнений — всё в одной связке.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Разработка продающего сайта и посадочных страниц</li><li>Ведение Яндекс.Директ — постоянная оптимизация</li><li>Контент-стратегия для Instagram и ВКонтакте</li><li>Коллаборации с популярными блогерами города</li><li>Подписчики и клиенты с первого месяца</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet10.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">Стабильный поток</div><div class="result-label">клиентов с первого месяца работы</div></div>
+      </div>
+    </div>
+
+    <div id="c11" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Татарстан</div><div class="modal-title">Строительство частных домов «под ключ» в Татарстане</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Привлечение целевых заявок на строительство частных домов в регионе. Высококонкурентная ниша — важен сильный оффер и точная настройка рекламы.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Анализ конкурентов в регионе</li><li>Продающий лендинг с акцентом на ключевые преимущества</li><li>Яндекс.Директ с геотаргетингом на Татарстан</li><li>Регулярная оптимизация и работа с отделом продаж</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet11.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">Стабильный поток</div><div class="result-label">целевых заявок на строительство домов</div></div>
+      </div>
+    </div>
+
+    <div id="c12" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">Строительство · Дома и коттеджи</div><div class="modal-title">Дома и коттеджи — компания «Ансат»</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Настроить стабильный поток заявок на строительство домов и коттеджей. Требовалась связка продающий сайт + реклама с чёткой аналитикой.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Разработка продающего лендинга под аудиторию компании</li><li>Настройка Яндекс.Директ с ежедневным мониторингом</li><li>Подключение коллтрекинга и сквозной аналитики</li><li>Оптимизация кампаний по реальным сделкам</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet12.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">Рост заявок</div><div class="result-label">и снижение стоимости лида</div></div>
+      </div>
+    </div>
+
+    <div id="c13" class="modal-content" style="display:none">
+      <div class="modal-head"><div><div class="modal-niche">B2B · Буровые работы</div><div class="modal-title">Горизонтально направленное бурение — целевые B2B-лиды</div></div><button class="modal-close" onclick="closeModal()">✕</button></div>
+      <div class="modal-body">
+        <div class="modal-section"><div class="modal-section-label">Задача</div><p>Сложная B2B-ниша с узкой аудиторией. Нужно было привлекать заявки от строительных и инфраструктурных компаний на горизонтальное бурение.</p></div>
+        <div class="modal-section"><div class="modal-section-label">Что сделано</div><ul><li>Детальный анализ B2B-аудитории и запросов</li><li>Лендинг с техническим позиционированием под профи</li><li>Точечная настройка Яндекс.Директ на целевую B2B-аудиторию</li><li>Квиз для квалификации до первого звонка</li></ul></div>
+        <div class="modal-screenshots"><img src="images/cabinet13.png" alt="Скрин кабинета"></div>
+        <div class="modal-section-label" style="margin-top:20px;">Точка Б — результат</div>
+        <div class="modal-result-box"><div class="result-num">Целевые B2B-лиды</div><div class="result-label">от строительных и инфраструктурных компаний</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================
+     ПРОЦЕСС РАБОТЫ
+================================================================ -->
+<section class="section" id="process">
+  <div class="container">
+    <div class="process-head fade-in">
+      <div class="tag">Как работаем</div>
+      <h2 class="section-title">Работа проходит в 5 этапов</h2>
+      <p class="section-sub">Прозрачный процесс — вы понимаете, что происходит на каждом шаге и какой будет результат.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-in"><div class="step-num">1</div><div class="step-content"><div class="step-title">Разбираю нишу и текущую ситуацию</div><div class="step-desc">Смотрю сайт, конкурентов, рекламу, оффер и точки потери заявок. Без этого шага любая реклама — гадание.</div></div></div>
+      <div class="process-step fade-in"><div class="step-num">2</div><div class="step-content"><div class="step-title">Собираю стратегию</div><div class="step-desc">Показываю, какую связку лучше использовать: сайт, квиз, поиск, РСЯ, Мастера кампаний, CRM и аналитику. Прогнозирую стоимость заявки под ваш бюджет.</div></div></div>
+      <div class="process-step fade-in"><div class="step-num">3</div><div class="step-content"><div class="step-title">Упаковываю посадочную страницу</div><div class="step-desc">Дорабатываю или создаю страницу, которая объясняет ценность и ведёт к заявке. Только структура, которая продаёт — без «красоты ради красоты».</div></div></div>
+      <div class="process-step fade-in"><div class="step-num">4</div><div class="step-content"><div class="step-title">Запускаю рекламу и аналитику</div><div class="step-desc">Настраиваю кампании, цели, формы, Метрику и передачу заявок. Еженедельные отчёты — вы всегда знаете, куда уходит каждый рубль.</div></div></div>
+      <div class="process-step fade-in"><div class="step-num">5</div><div class="step-content"><div class="step-title">Оптимизирую по цифрам</div><div class="step-desc">Смотрю не только на цену заявки, но и на качество лидов, конверсии и обратную связь от продаж. Масштабирую рабочие связки.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     ТАРИФЫ / ФОРМАТЫ РАБОТЫ
+================================================================ -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="pricing-head fade-in">
+      <div class="tag">Форматы работы</div>
+      <h2 class="section-title">Форматы работы</h2>
+      <p class="section-sub">Можно зайти с точечной задачи, а можно собрать полноценную систему лидогенерации. Финальный формат зависит от ниши, региона, конкуренции и текущей ситуации.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card fade-in fade-in-d1">
+        <div class="pricing-name">Запуск рекламы</div>
+        <div class="pricing-desc">Когда сайт уже есть, но нужно грамотно запустить Яндекс.Директ</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">Аудит сайта и текущей воронки</div>
+          <div class="pricing-feature">Стратегия запуска Яндекс.Директ</div>
+          <div class="pricing-feature">Настройка рекламных кампаний</div>
+          <div class="pricing-feature">Цели в Яндекс.Метрике</div>
+          <div class="pricing-feature">Базовая аналитика</div>
+          <div class="pricing-feature">Первичная оптимизация после запуска</div>
+        </div>
+        <div class="pricing-price">
+          <div class="pricing-price-main">от 45 000 ₽</div>
+          <div class="pricing-price-add">за запуск · ведение от 35 000 ₽/мес</div>
+        </div>
+        <button class="pricing-btn pricing-btn-outline" onclick="openConsult()">Обсудить запуск</button>
+      </div>
+
+      <div class="pricing-card featured fade-in fade-in-d2">
+        <div class="pricing-badge">Популярный формат</div>
+        <div class="pricing-name">Сайт + Директ</div>
+        <div class="pricing-desc">Когда нужна связка: посадочная страница + трафик + заявки</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">Анализ ниши и конкурентов</div>
+          <div class="pricing-feature">Структура лендинга или квиза</div>
+          <div class="pricing-feature">Разработка посадочной страницы</div>
+          <div class="pricing-feature">Настройка Яндекс.Директ</div>
+          <div class="pricing-feature">Метрика, цели и формы</div>
+          <div class="pricing-feature">Базовая связка с CRM или Telegram</div>
+          <div class="pricing-feature">Запуск и оптимизация</div>
+        </div>
+        <div class="pricing-price">
+          <div class="pricing-price-main">от 90 000 ₽</div>
+          <div class="pricing-price-add">ведение от 50 000 ₽/мес</div>
+        </div>
+        <button class="pricing-btn pricing-btn-solid" onclick="openConsult()">Хочу такую связку</button>
+      </div>
+
+      <div class="pricing-card fade-in fade-in-d3">
+        <div class="pricing-name">Система лидогенерации</div>
+        <div class="pricing-desc">Когда нужно не просто запуститься, а выстроить управляемый поток заявок</div>
+        <div class="pricing-features">
+          <div class="pricing-feature">Стратегия привлечения клиентов</div>
+          <div class="pricing-feature">Лендинг или квиз</div>
+          <div class="pricing-feature">Яндекс.Директ</div>
+          <div class="pricing-feature">CRM и аналитика</div>
+          <div class="pricing-feature">Офферы, формы и точки конверсии</div>
+          <div class="pricing-feature">Еженедельные отчёты</div>
+          <div class="pricing-feature">Работа с качеством лидов</div>
+          <div class="pricing-feature">Масштабирование рабочих связок</div>
+        </div>
+        <div class="pricing-price">
+          <div class="pricing-price-main">от 150 000 ₽</div>
+          <div class="pricing-price-add">ведение от 70 000 ₽/мес</div>
+        </div>
+        <button class="pricing-btn pricing-btn-outline" onclick="openConsult()">Собрать систему</button>
+      </div>
+
+    </div>
+    <p class="pricing-disclaimer fade-in">Финальная стоимость зависит от ниши, региона, конкуренции и объёма работ. На консультации разберём вашу ситуацию и выберем формат, который реально подходит под задачу.</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     ОТЗЫВЫ
+================================================================ -->
+<section class="section reviews" id="reviews">
+  <div class="container">
+    <div class="reviews-head fade-in">
+      <div class="tag">Отзывы</div>
+      <h2 class="section-title">Что говорят клиенты</h2>
+      <p class="section-sub">Реальные скрины переписок и видео-отзывы — без монтажа и приукрас.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in fade-in-d1">
+        <div class="review-img">
+          <img src="images/photo1.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo1.jpg</div>'">
+        </div>
+        <div class="review-label">Владимир Баранов — цена регистрации снизилась в 2 раза, бюджет увеличат</div>
+      </div>
+      <div class="review-card fade-in fade-in-d2">
+        <div class="review-img">
+          <img src="images/photo2.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo2.jpg</div>'">
+        </div>
+        <div class="review-label">Анастасия — ROAS вышел 3,4 · «Команда очень довольна. Спасибо!»</div>
+      </div>
+      <div class="review-card fade-in fade-in-d3">
+        <div class="review-img">
+          <img src="images/photo3.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo3.jpg</div>'">
+        </div>
+        <div class="review-label">Ирина — 9 звонков + 4 в WhatsApp + 11 заявок с сайта за неделю</div>
+      </div>
+      <div class="review-card fade-in fade-in-d1">
+        <div class="review-img">
+          <img src="images/photo4.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo4.jpg</div>'">
+        </div>
+        <div class="review-label">Обновите текст под этот отзыв</div>
+      </div>
+      <div class="review-card fade-in fade-in-d2">
+        <div class="review-img">
+          <img src="images/photo5.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo5.jpg</div>'">
+        </div>
+        <div class="review-label">Обновите текст под этот отзыв</div>
+      </div>
+      <div class="review-card fade-in fade-in-d3">
+        <div class="review-img">
+          <img src="images/photo6.jpg" alt="Отзыв" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:6px;color:var(--text-3);font-size:12px;text-align:center;padding:16px;\'>&#128241; Сохраните скрин<br/>как images/photo6.jpg</div>'">
+        </div>
+        <div class="review-label">Обновите текст под этот отзыв</div>
+      </div>
+    </div>
+
+    <!-- Видео-отзывы клиентов -->
+    <div class="video-grid">
+      <div class="video-card fade-in fade-in-d1">
+        <video src="images/video_review1.mp4" controls playsinline preload="metadata" style="width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block;"></video>
+        <div class="video-label">Видео-отзыв · Строительный бизнес</div>
+      </div>
+      <div class="video-card fade-in fade-in-d2">
+        <video src="images/video_review2.mp4" controls playsinline preload="metadata" style="width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block;"></video>
+        <div class="video-label">Видео-отзыв · Клиент о результатах</div>
+      </div>
+      <div class="video-card fade-in fade-in-d3">
+        <video src="images/video_review3.mp4" controls playsinline preload="metadata" style="width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block;"></video>
+        <div class="video-label">Видео-отзыв · Реклама и продажи</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     КВИЗ
+================================================================ -->
+<section class="section" id="quiz" style="background:var(--bg);">
+  <div class="container">
+    <div class="quiz-wrap fade-in">
+      <div class="quiz-header">
+        <div class="tag" style="margin-bottom:10px;">Оставить заявку</div>
+        <h2>Расскажите о вашем проекте</h2>
+        <p>4 быстрых вопроса — и я покажу, как именно смогу помочь вашему бизнесу</p>
+      </div>
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress" style="width:0%"></div></div>
+      <div class="quiz-body">
+
+        <!-- Шаг 1 -->
+        <div class="quiz-step active" data-step="1">
+          <div class="quiz-q-num">Вопрос 1 из 4</div>
+          <div class="quiz-q-text">Что хотите усилить в первую очередь?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-q="1" data-val="site" data-warm="За 4+ года я разработал 50+ продающих сайтов. Покажу, как правильная упаковка меняет конверсию в вашей нише."><div class="quiz-option-dot"></div>Нужен сайт или лендинг</button>
+            <button class="quiz-option" data-q="1" data-val="ads" data-warm="Классическая ситуация. Разберём, где именно теряются заявки — в рекламе, на сайте или в обработке лидов."><div class="quiz-option-dot"></div>Нужна реклама в Яндекс.Директ</button>
+            <button class="quiz-option" data-q="1" data-val="system" data-warm="Именно с комплексной связки начинается предсказуемый рост — не разовый всплеск, а стабильный поток."><div class="quiz-option-dot"></div>Нужна связка сайт + реклама</button>
+            <button class="quiz-option" data-q="1" data-val="existing" data-warm="Хорошо — значит есть база. Разберём, где теряется результат и что нужно докрутить для роста."><div class="quiz-option-dot"></div>Реклама уже есть, но результата мало</button>
+          </div>
+          <div class="quiz-warm" id="warm-1"><span class="quiz-warm-icon">✦</span><span class="quiz-warm-text"></span></div>
+          <div class="quiz-nav">
+            <button class="btn-quiz-back hidden">← Назад</button>
+            <button class="btn-quiz-next" id="next-1" onclick="nextStep(2)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="quiz-step" data-step="2">
+          <div class="quiz-q-num">Вопрос 2 из 4</div>
+          <div class="quiz-q-text">В какой нише работаете?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-q="2" data-val="construction" data-warm="Строительство — моя сильнейшая ниша. Кейсы от 1,6 до 39 млн рублей. Знаю, что работает."><div class="quiz-option-dot"></div>Строительство / ремонт</button>
+            <button class="quiz-option" data-q="2" data-val="production" data-warm="Производство и B2B — сложные воронки с длинным циклом сделки. Именно такие задачи мне нравятся."><div class="quiz-option-dot"></div>Производство / B2B</button>
+            <button class="quiz-option" data-q="2" data-val="services" data-warm="Услуги требуют точного оффера и правильной квалификации лидов. Именно это я умею выстраивать."><div class="quiz-option-dot"></div>Услуги</button>
+            <button class="quiz-option" data-q="2" data-val="online" data-warm="Есть опыт в онлайн-проектах — школы, курсы, подписки. Воронки под этот формат отличаются."><div class="quiz-option-dot"></div>Онлайн-проект</button>
+            <button class="quiz-option" data-q="2" data-val="other" data-warm="Есть опыт в разных нишах — недвижимость, фитнес, франшизы. Интересно узнать про ваш проект."><div class="quiz-option-dot"></div>Другое</button>
+          </div>
+          <div class="quiz-warm" id="warm-2"><span class="quiz-warm-icon">✦</span><span class="quiz-warm-text"></span></div>
+          <div class="quiz-nav">
+            <button class="btn-quiz-back" onclick="prevStep(1)">← Назад</button>
+            <button class="btn-quiz-next" id="next-2" onclick="nextStep(3)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="quiz-step" data-step="3">
+          <div class="quiz-q-num">Вопрос 3 из 4</div>
+          <div class="quiz-q-text">Что сейчас больше всего мешает росту?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-q="3" data-val="few" data-warm="Мало заявок — классическая проблема слабого сайта или неправильно настроенной рекламы. Разберёмся."><div class="quiz-option-dot"></div>Мало заявок</button>
+            <button class="quiz-option" data-q="3" data-val="expensive" data-warm="Дорогие заявки говорят о проблемах в связке: неправильные ключи, слабая посадочная или нет квалификации."><div class="quiz-option-dot"></div>Дорогие заявки</button>
+            <button class="quiz-option" data-q="3" data-val="quality" data-warm="Нецелевые заявки — часто проблема оффера или отсутствия квиза-квалификатора. Это решаемо."><div class="quiz-option-dot"></div>Много нецелевых заявок</button>
+            <button class="quiz-option" data-q="3" data-val="analytics" data-warm="Без аналитики невозможно принимать правильные решения. Настроим сквозную связку и увидим картину целиком."><div class="quiz-option-dot"></div>Нет понятной аналитики</button>
+            <button class="quiz-option" data-q="3" data-val="direction" data-warm="Это самый частый запрос. Начнём с аудита — станет ясно, что делать в первую очередь."><div class="quiz-option-dot"></div>Не понимаю, что делать дальше</button>
+          </div>
+          <div class="quiz-warm" id="warm-3"><span class="quiz-warm-icon">✦</span><span class="quiz-warm-text"></span></div>
+          <div class="quiz-nav">
+            <button class="btn-quiz-back" onclick="prevStep(2)">← Назад</button>
+            <button class="btn-quiz-next" id="next-3" onclick="nextStep(4)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div class="quiz-step" data-step="4">
+          <div class="quiz-q-num">Вопрос 4 из 4</div>
+          <div class="quiz-q-text">Какой бюджет готовы выделять на рекламу в месяц?</div>
+          <div class="quiz-options">
+            <button class="quiz-option" data-q="4" data-val="s1" data-warm="Даже с таким бюджетом можно выстроить стабильный поток — главное правильная стратегия."><div class="quiz-option-dot"></div>До 100 000 ₽</button>
+            <button class="quiz-option" data-q="4" data-val="s2" data-warm="Хороший бюджет для полноценной системы. Виден серьёзный результат с первого месяца."><div class="quiz-option-dot"></div>100 000 — 300 000 ₽</button>
+            <button class="quiz-option" data-q="4" data-val="s3" data-warm="Отличный бюджет для масштабирования. На этой сумме занимают позицию лидера рынка."><div class="quiz-option-dot"></div>300 000 — 1 000 000 ₽</button>
+            <button class="quiz-option" data-q="4" data-val="s4" data-warm="С таким бюджетом можно агрессивно масштабироваться и доминировать в нише."><div class="quiz-option-dot"></div>От 1 000 000 ₽</button>
+            <button class="quiz-option" data-q="4" data-val="s0" data-warm="Без проблем — определимся с бюджетом на консультации. Главное понять ваши цели."><div class="quiz-option-dot"></div>Пока хочу понять вилку</button>
+          </div>
+          <div class="quiz-warm" id="warm-4"><span class="quiz-warm-icon">✦</span><span class="quiz-warm-text"></span></div>
+          <div class="quiz-nav">
+            <button class="btn-quiz-back" onclick="prevStep(3)">← Назад</button>
+            <button class="btn-quiz-next" id="next-4" onclick="showForm()">Узнать результат →</button>
+          </div>
+        </div>
+
+        <!-- Форма -->
+        <div class="quiz-form-step" id="quiz-form-step">
+          <div class="quiz-form-intro">Уже можно понять, какая связка вам подойдёт</div>
+          <div class="quiz-form-sub">Оставьте контакт — разберу вашу ситуацию и покажу, с чего лучше начать: сайт, реклама, аналитика или вся система сразу.</div>
+          <!-- TODO: подключить отправку заявок на email khmurtazin@yandex.ru после размещения сайта на хостинге или через внешний сервис форм. -->
+          <form id="quizForm" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="task" id="f-task">
+            <input type="hidden" name="niche" id="f-niche">
+            <input type="hidden" name="problem" id="f-problem">
+            <input type="hidden" name="budget" id="f-budget">
+            <input type="hidden" name="source_form" value="quiz">
+            <div class="form-row">
+              <div class="form-group"><label>Ваше имя</label><input type="text" id="f-name" name="name" placeholder="Иван Иванов" required></div>
+              <div class="form-group"><label>Телефон / Telegram</label><input type="text" id="f-phone" name="phone" placeholder="+7 900 000 00 00" required></div>
+            </div>
+            <button type="submit" class="form-submit">Получить разбор →</button>
+            <div class="form-privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</div>
+          </form>
+          <div class="quiz-success" id="quiz-success">
+            <div class="quiz-success-icon">🎯</div>
+            <h3>Заявка отправлена</h3>
+            <p>Спасибо! Я получил вашу заявку и свяжусь с вами в рабочее время.<br/>Если вопрос срочный — напишите мне в Telegram или WhatsApp.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     ФИНАЛЬНЫЙ CTA
+================================================================ -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="fade-in">
+        <div class="tag">Дальше — решение за вами</div>
+        <h2 class="cta-title">Хотите понять, какая связка сработает <em>в вашей нише?</em></h2>
+        <p class="cta-text">Напишите мне — разберём вашу ситуацию и прикинем, что даст больше результата: доработка сайта, запуск Яндекс.Директ, квиз, аналитика или полноценная система лидогенерации.</p>
+        <div class="cta-contacts">
+          <a href="https://t.me/kzn_mur" target="_blank" class="cta-link">
+            <div class="cta-link-icon tg">✈️</div>
+            <div><div class="cta-link-label">Написать в Telegram</div><div class="cta-link-val">@kzn_mur</div></div>
+          </a>
+          <a href="https://wa.me/79953324333" target="_blank" class="cta-link">
+            <div class="cta-link-icon wa">💬</div>
+            <div><div class="cta-link-label">Написать в WhatsApp</div><div class="cta-link-val">+7 (995) 332-43-33</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="cta-consult-card fade-in fade-in-d2">
+        <div class="cta-consult-card-title">Что получите на консультации:</div>
+        <ul class="cta-consult-list">
+          <li>Разбор текущей точки А</li>
+          <li>Оценку сайта, рекламы или воронки</li>
+          <li>Понимание, где теряются заявки</li>
+          <li>2–3 гипотезы роста</li>
+          <li>Рекомендацию по формату работы и бюджету</li>
+        </ul>
+        <button class="btn-primary" onclick="openConsult()" style="width:100%;justify-content:center;margin-top:6px;">Записаться на консультацию</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTATION POPUP -->
+<div class="consult-overlay" id="consultOverlay" onclick="closeConsultOutside(event)">
+  <div class="consult-modal">
+    <button class="consult-close" onclick="closeConsult()">✕</button>
+    <div id="consultForm">
+      <div class="consult-badge">Бесплатно · 30 минут</div>
+      <h2 class="consult-h">Консультация с <em>топовым интернет-маркетологом</em></h2>
+      <p class="consult-sub">Разберём вашу ситуацию, найдём что мешает росту и дадим конкретный план. Без воды и продаж в лоб.</p>
+      <div class="consult-field-label">Ваш номер телефона</div>
+      <div class="consult-phone-wrap">
+        <input type="tel" id="consultPhone" placeholder="+7 (900) 000-00-00" maxlength="18" autocomplete="tel">
+      </div>
+      <div class="consult-field-label">Как с вами связаться</div>
+      <div class="consult-chips">
+        <div class="consult-chip" data-method="call" onclick="selectConsultMethod(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.05 2.2 2 2 0 012 .05h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16v.92z"/></svg>
+          Позвонить
+        </div>
+        <div class="consult-chip" data-method="telegram" onclick="selectConsultMethod(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.516c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.881.705z"/></svg>
+          Telegram
+        </div>
+        <div class="consult-chip" data-method="whatsapp" onclick="selectConsultMethod(this)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </div>
+      </div>
+      <button class="consult-submit" onclick="submitConsult()">Получить консультацию →</button>
+      <p class="consult-privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+    </div>
+    <div class="consult-success" id="consultSuccess">
+      <div class="consult-success-icon">✅</div>
+      <h3>Заявка отправлена</h3>
+      <p>Спасибо! Я получил вашу заявку и свяжусь с вами в рабочее время.<br>Если вопрос срочный — напишите мне в Telegram или WhatsApp.</p>
+      <button onclick="closeConsult()" style="margin-top:20px;padding:11px 28px;background:var(--gold);color:#000;font-weight:700;font-size:14px;border:none;border-radius:var(--r);cursor:pointer;">Хорошо</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2024 Хайдар Муртазин · Все права защищены</div>
+      <div class="footer-links">
+        <a href="https://t.me/kzn_mur" target="_blank">Telegram</a>
+        <a href="#" onclick="openConsult();return false;">Консультация 30 мин</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* Scroll animations */
+  const obs = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  /* Mobile menu */
+  document.getElementById('burger').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('open'));
+  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open')));
+
+  /* Modal */
+  function openModal(id) {
+    document.querySelectorAll('.modal-content').forEach(c => c.style.display = 'none');
+    const el = document.getElementById(id);
+    if (el) {
+      el.style.display = 'block';
+      // Добавить кнопку Telegram если ещё нет
+      if (!el.querySelector('.btn-case-tg')) {
+        const btn = document.createElement('a');
+        btn.className = 'btn-case-tg';
+        btn.href = 'https://t.me/kzn_mur';
+        btn.target = '_blank';
+        btn.rel = 'noopener';
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.516c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.881.705z"/></svg> Запросить подробный кейс';
+        el.querySelector('.modal-body').appendChild(btn);
+      }
+      document.getElementById('overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  function closeModal() { document.getElementById('overlay').classList.remove('open'); document.body.style.overflow = ''; }
+  function closeModalOutside(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeConsult(); } });
+
+  /* Consultation popup */
+  function openConsult() {
+    document.getElementById('consultOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const p = document.getElementById('consultPhone'); if(p) p.focus(); }, 320);
+  }
+  function closeConsult() {
+    document.getElementById('consultOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeConsultOutside(e) { if (e.target === document.getElementById('consultOverlay')) closeConsult(); }
+
+  /* Phone mask +7 */
+  (function() {
+    const inp = document.getElementById('consultPhone');
+    inp.addEventListener('focus', function() { if (!this.value) this.value = '+7 '; });
+    inp.addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '');
+      if (v.startsWith('8')) v = '7' + v.slice(1);
+      if (!v.startsWith('7')) v = '7' + v;
+      v = v.slice(0, 11);
+      let r = '+7';
+      if (v.length > 1) r += ' (' + v.slice(1, Math.min(4, v.length));
+      if (v.length >= 4) r += ') ' + v.slice(4, Math.min(7, v.length));
+      if (v.length >= 7) r += '-' + v.slice(7, Math.min(9, v.length));
+      if (v.length >= 9) r += '-' + v.slice(9, 11);
+      this.value = r;
+    });
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Backspace' && (this.value === '+7 ' || this.value === '+7')) e.preventDefault();
+    });
+  })();
+
+  let _consultMethod = '';
+  function selectConsultMethod(el) {
+    document.querySelectorAll('.consult-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    _consultMethod = el.dataset.method;
+  }
+
+  function submitConsult() {
+    const inp = document.getElementById('consultPhone');
+    const digits = inp.value.replace(/\D/g, '');
+    if (digits.length < 11) {
+      inp.classList.add('error');
+      inp.focus();
+      setTimeout(() => inp.classList.remove('error'), 1800);
+      return;
+    }
+    const formData = {
+      phone:          inp.value,
+      contact_method: _consultMethod || 'не выбран',
+      source_form:    'consult',
+      submitted_at:   new Date().toISOString()
+    };
+    console.log('Заявка с попапа:', formData);
+    document.getElementById('consultForm').style.display = 'none';
+    document.getElementById('consultSuccess').classList.add('show');
+    setTimeout(closeConsult, 4500);
+  }
+
+  /* Quiz */
+  const answers = {};
+  const warmings = {
+    1: { site:'За 4+ года я разработал 50+ продающих сайтов. Покажу, как правильная упаковка меняет конверсию в вашей нише.', ads:'Классическая ситуация. Разберём, где именно теряются заявки — в рекламе, на сайте или в обработке лидов.', system:'Именно с комплексной связки начинается предсказуемый рост — не разовый всплеск, а стабильный поток.', existing:'Хорошо — значит есть база. Разберём, где теряется результат и что нужно докрутить для роста.' },
+    2: { construction:'Строительство — моя сильнейшая ниша. Кейсы от 1,6 до 39 млн рублей. Знаю, что работает.', production:'Производство и B2B — сложные воронки с длинным циклом сделки. Именно такие задачи мне нравятся.', services:'Услуги требуют точного оффера и правильной квалификации лидов. Именно это я умею выстраивать.', online:'Есть опыт в онлайн-проектах — школы, курсы, подписки. Воронки под этот формат отличаются.', other:'Есть опыт в разных нишах — недвижимость, фитнес, франшизы. Интересно узнать про ваш проект.' },
+    3: { few:'Мало заявок — классическая проблема слабого сайта или неправильно настроенной рекламы. Разберёмся.', expensive:'Дорогие заявки говорят о проблемах в связке: неправильные ключи, слабая посадочная или нет квалификации.', quality:'Нецелевые заявки — часто проблема оффера или отсутствия квиза-квалификатора. Это решаемо.', analytics:'Без аналитики невозможно принимать правильные решения. Настроим сквозную связку.', direction:'Это самый частый запрос. Начнём с аудита — станет ясно, что делать в первую очередь.' },
+    4: { s1:'Даже с таким бюджетом можно выстроить стабильный поток — главное правильная стратегия.', s2:'Хороший бюджет для полноценной системы. Виден серьёзный результат с первого месяца.', s3:'Отличный бюджет для масштабирования. На этой сумме занимают позицию лидера рынка.', s4:'С таким бюджетом можно агрессивно масштабироваться и доминировать в нише.', s0:'Без проблем — определимся с бюджетом на консультации. Главное понять ваши цели.' }
+  };
+  const labelMap = {
+    task:    { site:'Нужен сайт или лендинг', ads:'Нужна реклама в Директ', system:'Нужна связка сайт + реклама', existing:'Реклама есть, результата мало' },
+    niche:   { construction:'Строительство/ремонт', production:'Производство/B2B', services:'Услуги', online:'Онлайн-проект', other:'Другое' },
+    problem: { few:'Мало заявок', expensive:'Дорогие заявки', quality:'Много нецелевых', analytics:'Нет аналитики', direction:'Не знаю что делать' },
+    budget:  { s1:'До 100 000 ₽', s2:'100 000–300 000 ₽', s3:'300 000–1 000 000 ₽', s4:'От 1 000 000 ₽', s0:'Пока хочу понять вилку' }
+  };
+
+  document.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const q = this.dataset.q, val = this.dataset.val;
+      answers[q] = val;
+      document.querySelectorAll(`.quiz-option[data-q="${q}"]`).forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const w = document.getElementById(`warm-${q}`);
+      w.querySelector('.quiz-warm-text').textContent = warmings[q][val] || '';
+      w.classList.add('show');
+      const nb = document.getElementById(`next-${q}`);
+      if (nb) nb.classList.add('ready');
+    });
+  });
+
+  function nextStep(step) {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    const el = document.querySelector(`.quiz-step[data-step="${step}"]`);
+    if (el) el.classList.add('active');
+    document.getElementById('quiz-progress').style.width = ((step - 1) / 4 * 100) + '%';
+    document.querySelector('.quiz-body').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function prevStep(step) {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    const el = document.querySelector(`.quiz-step[data-step="${step}"]`);
+    if (el) el.classList.add('active');
+    document.getElementById('quiz-progress').style.width = ((step - 1) / 4 * 100) + '%';
+  }
+
+  function showForm() {
+    document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('quiz-form-step').classList.add('active');
+    document.getElementById('quiz-progress').style.width = '100%';
+    document.getElementById('f-task').value    = labelMap.task[answers[1]] || '';
+    document.getElementById('f-niche').value   = labelMap.niche[answers[2]] || '';
+    document.getElementById('f-problem').value = labelMap.problem[answers[3]] || '';
+    document.getElementById('f-budget').value  = labelMap.budget[answers[4]] || '';
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = {
+      name:          document.getElementById('f-name').value,
+      phone:         document.getElementById('f-phone').value,
+      task:          document.getElementById('f-task').value,
+      niche:         document.getElementById('f-niche').value,
+      problem:       document.getElementById('f-problem').value,
+      budget:        document.getElementById('f-budget').value,
+      source_form:   'quiz',
+      submitted_at:  new Date().toISOString()
+    };
+    console.log('Заявка с квиза:', formData);
+    form.style.display = 'none';
+    document.getElementById('quiz-success').classList.add('show');
+  }
+</script>
+</body>
+</html>

@@ -469,6 +469,19 @@
     .consult-success h3 { font-size:22px; font-weight:800; margin-bottom:8px; letter-spacing:-.02em; }
     .consult-success p { font-size:14px; color:var(--text-2); line-height:1.7; }
   </style>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108873313', 'ym');
+    ym(108873313, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/108873313" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
 
@@ -1400,13 +1413,12 @@
       setTimeout(() => inp.classList.remove('error'), 1800);
       return;
     }
-    const formData = {
-      phone:          inp.value,
-      contact_method: _consultMethod || 'не выбран',
-      source_form:    'consult',
-      submitted_at:   new Date().toISOString()
-    };
-    console.log('Заявка с попапа:', formData);
+    const data = new FormData();
+    data.append('phone',          inp.value);
+    data.append('contact_method', _consultMethod || 'не выбран');
+    data.append('source_form',    'consult');
+    fetch('send.php', { method: 'POST', body: data })
+      .catch(() => {});
     document.getElementById('consultForm').style.display = 'none';
     document.getElementById('consultSuccess').classList.add('show');
     setTimeout(closeConsult, 4500);
@@ -1469,16 +1481,15 @@
   function handleSubmit(e) {
     e.preventDefault();
     const form = e.target;
-    const formData = {
-      phone:         document.getElementById('f-phone').value,
-      task:          document.getElementById('f-task').value,
-      niche:         document.getElementById('f-niche').value,
-      problem:       document.getElementById('f-problem').value,
-      budget:        document.getElementById('f-budget').value,
-      source_form:   'quiz',
-      submitted_at:  new Date().toISOString()
-    };
-    console.log('Заявка с квиза:', formData);
+    const data = new FormData();
+    data.append('phone',       document.getElementById('f-phone').value);
+    data.append('task',        document.getElementById('f-task').value);
+    data.append('niche',       document.getElementById('f-niche').value);
+    data.append('problem',     document.getElementById('f-problem').value);
+    data.append('budget',      document.getElementById('f-budget').value);
+    data.append('source_form', 'quiz');
+    fetch('send.php', { method: 'POST', body: data })
+      .catch(() => {});
     form.style.display = 'none';
     document.getElementById('quiz-success').classList.add('show');
   }

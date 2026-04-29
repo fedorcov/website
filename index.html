@@ -1419,6 +1419,8 @@
     data.append('source_form',    'consult');
     fetch('send.php', { method: 'POST', body: data })
       .catch(() => {});
+    ym(108873313, 'reachGoal', 'consult_submit');
+    ym(108873313, 'reachGoal', 'form_submit');
     document.getElementById('consultForm').style.display = 'none';
     document.getElementById('consultSuccess').classList.add('show');
     setTimeout(closeConsult, 4500);
@@ -1459,6 +1461,7 @@
     if (el) el.classList.add('active');
     document.getElementById('quiz-progress').style.width = ((step - 1) / 4 * 100) + '%';
     document.querySelector('.quiz-body').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    ym(108873313, 'reachGoal', 'quiz_step_' + step);
   }
 
   function prevStep(step) {
@@ -1476,6 +1479,7 @@
     document.getElementById('f-niche').value   = labelMap.niche[answers[2]] || '';
     document.getElementById('f-problem').value = labelMap.problem[answers[3]] || '';
     document.getElementById('f-budget').value  = labelMap.budget[answers[4]] || '';
+    ym(108873313, 'reachGoal', 'quiz_reached_form');
   }
 
   function handleSubmit(e) {
@@ -1490,6 +1494,8 @@
     data.append('source_form', 'quiz');
     fetch('send.php', { method: 'POST', body: data })
       .catch(() => {});
+    ym(108873313, 'reachGoal', 'quiz_submit');
+    ym(108873313, 'reachGoal', 'form_submit');
     form.style.display = 'none';
     document.getElementById('quiz-success').classList.add('show');
   }
